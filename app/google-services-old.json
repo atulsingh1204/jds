@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "402539272814",
+    "project_id": "rkofficial",
+    "storage_bucket": "rkofficial.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:402539272814:android:086ff92f46864c7857247f",
+        "android_client_info": {
+          "package_name": "com.bpointer.rkofficial"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "402539272814-d4qnjssqdfcf6i7ou650cm6hf1vihcpg.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAMvB9jySouAOakEZzVQltDje5MggC2PNE"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "402539272814-d4qnjssqdfcf6i7ou650cm6hf1vihcpg.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

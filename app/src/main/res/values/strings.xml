@@ -1,0 +1,35 @@
+<resources>
+    <string name="app_name">DRS Group</string>
+    <string name="default_notification_channel_id">121212</string>
+    <string name="english_message">In whichever state playing this game is restricted, please do not play this game in those states.</string>
+    <string name="hindi_message">जो भी राज्य में इस गेम को खेलना प्रतिबंधित है, कृपया उन राज्यों में इस गेम को न खेलें।</string>
+    <string name="rk_official_1234567890">DRS Group </string>
+    <string name="account_registration">Account Registration</string>
+    <string name="register_your_self_and_play_games">Register Your Self And Play Games</string>
+    <string name="first_name">First Name</string>
+    <string name="last_name">Last Name</string>
+    <string name="mobile">Mobile</string>
+    <string name="email">Email</string>
+    <string name="userid">Userid</string>
+    <string name="password">Password</string>
+    <string name="register">REGISTER</string>
+    <string name="login_account">Login Account</string>
+    <string name="email_admin_gmail_com">Email: </string>
+    <string name="mo_911234567890">Mo. </string>
+    <string name="login">LOGIN</string>
+    <string name="login_with_mpin">LOGIN WITH MPIN</string>
+    <string name="forgot_password">FORGOT PASSWORD?</string>
+    <string name="register_account">REGISTER ACCOUNT?</string>
+    <string name="customer_service_mon_sat_10_00am_10_00pm_sun_11_00am_05_00pm">Customer Service Mon-Sat : 10:00Am-10:00Pm, Sun :11:00Am-05:00Pm</string>
+    <string name="get_password">GET PASSWORD</string>
+    <string name="mpin">MPIN</string>
+    <string name="login_mpin">LOGIN MPIN</string>
+    <string name="this_is_premium_category_application_n_please_kindly_co_operate_minimum_n_deposit_amount_is_1000_and_withdrawal_n_amount_is_1000_n_n_withdrawal">This Is Premium Category Application \n Please Kindly Co-Operate. Minimum \n Deposit Amount Is Rs.100 And Withdrawal \n Amount Is Rs.100. \n\n Withdrawal</string>
+    <string name="withdrawal_will_be_accepted_from_24_hour_n_and_will_be_credited_between_24_hour_n_withdrawals_are_accepted_from_monday_n_to_firday_withdrawal_is_not_available_on_n_sunday_and_on_bank_holidays_for_found_n_withdrawal_query_contact">Withdrawal Will be accepted from 24 hour \n and will be credited between 24 hour \n Withdrawals are accepted from Monday \n To Friday Withdrawal is not available on \n Sunday And on bank holidays. For Found \n Withdrawal Query Contact</string>
+    <string name="all_customers_are_requested_to_update_n_your_bank_account_with_ifsc_code_in_your_n_profile_before_remittances_it_s_mandatory_n_kindly_cooperate">All customers are requested to update \n your Bank Account with IFSC code in your\n Profile before remittances. It\'s mandatory\n kindly cooperate.</string>
+    <string name="how_to_play_rk_official">How To Play DRS Group</string>
+    <string name="youtube_links">YouTube Links</string>
+    <string name="simple_download_our_application_from_play_store_register_with_your_mobile_number_emailid_and_username_with_rs_official_login_into_the_application_using_user_name_and_password_select_the_main_type_then_the_game_type_then_select_your_favourite_number_and_play_the_game">Simple Download our Application from Play store. Register with your Mobile Number, Email id And Username with DRS Group . Login into the Application using user name and password. Select the Main type then the Game type then select your favourite number and play the game.</string>
+    <string name="enter_4_digit_mpin">Enter 4 Digit Mpin</string>
+    <string name="confirm_password">Confirm Password</string>
+</resources>

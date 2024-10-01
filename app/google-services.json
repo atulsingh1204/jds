@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "210867063153",
+    "project_id": "drs-group-162e4",
+    "storage_bucket": "drs-group-162e4.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:210867063153:android:da7de562472a65f8a10ed0",
+        "android_client_info": {
+          "package_name": "com.drsgroup.drsofficial"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDztV55CefpbMjUxEqIzoh7CEdKwnsCME4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

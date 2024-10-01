@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:showIn="navigation_view">
+    <item
+        android:id="@+id/nav_Home"
+        android:title="Home" />
+    <!--    <item-->
+
+    <!--        android:id="@+id/nav_Profile"-->
+    <!--        android:title="Profile" />-->
+
+    <item
+        android:id="@+id/nav_GameHistory"
+        android:title="Game History" />
+
+    <item
+        android:id="@+id/nav_WinHistory"
+        android:title="Win History" />
+
+    <item
+        android:id="@+id/nav_PointHistory"
+        android:title="Point History"
+        android:visible="true"/>
+
+    <item
+        android:id="@+id/nav_WithdrawPoints"
+        android:title="Withdraw Points" />
+
+    <!--    <item-->
+    <!--        android:id="@+id/nav_WithdrawHistory"-->
+    <!--        android:title="Withdraw History" />-->
+
+    <item
+        android:id="@+id/nav_GameRate"
+        android:title="Game Rate" />
+
+    <item
+        android:id="@+id/nav_changepassword"
+        android:title="Change Password" />
+
+    <item
+        android:id="@+id/nav_logout"
+        android:title="Logout" />
+</menu>

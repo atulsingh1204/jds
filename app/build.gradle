@@ -1,0 +1,83 @@
+apply plugin: 'com.android.application'
+apply plugin: 'com.google.gms.google-services'
+
+android {
+    signingConfigs {
+        release {
+            storeFile file('D:\\atul_workspace\\drs_group\\app\\rkofficial.jks')
+            keyAlias 'rkofficial'
+            storePassword 'jmtit@123'
+            keyPassword 'jmtit@123'
+        }
+    }
+    compileSdkVersion 33
+    //buildToolsVersion "30.0.2"
+
+    defaultConfig {
+        //applicationId "com.bpointer.rkofficial"
+//        applicationId "com.rkgroup.rkofficial"
+        applicationId "com.drsgroup.drsofficial"
+
+        minSdkVersion 21
+        targetSdkVersion 33
+        //versionCode 10
+        //versionName "1.8"
+        versionCode 6
+        versionName "1.5"
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+    }
+
+    buildTypes {
+        release {
+            multiDexEnabled true
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+            signingConfig signingConfigs.release
+        }
+    }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+}
+
+dependencies {
+    implementation fileTree(include: ['*.jar'], dir: 'libs')
+    implementation 'androidx.appcompat:appcompat:1.1.0'
+//      implementation 'com.google.android.material:material:1.0.0'
+    implementation 'androidx.constraintlayout:constraintlayout:1.1.3'
+    implementation 'com.github.castorflex.smoothprogressbar:library-circular:1.3.0'
+    implementation 'androidx.viewpager2:viewpager2:1.0.0-alpha01'
+    implementation "com.google.android.material:material:1.1.0-alpha07"
+
+    implementation 'com.github.smarteist:autoimageslider:1.4.0-appcompat'
+
+    implementation 'com.squareup.retrofit2:retrofit:2.6.2'
+    implementation 'com.squareup.okhttp3:okhttp:3.12.1'
+    implementation 'com.squareup.retrofit2:converter-gson:2.6.2'
+    implementation 'com.squareup.okhttp3:logging-interceptor:3.12.1'
+
+    implementation 'net.opacapp:multiline-collapsingtoolbar:27.1.1'
+    implementation "androidx.coordinatorlayout:coordinatorlayout:1.1.0"
+    implementation 'com.chaos.view:pinview:1.4.3'
+    implementation 'com.github.bumptech.glide:glide:4.11.0'
+    implementation 'com.google.firebase:firebase-auth:22.3.0'
+    annotationProcessor 'com.github.bumptech.glide:compiler:4.11.0'
+
+    implementation 'com.github.f0ris.sweetalert:library:1.6.2'
+    implementation 'com.tuyenmonkey:mkloader:1.4.0'
+
+    // Import the Firebase BoM
+    implementation platform('com.google.firebase:firebase-bom:28.4.2')
+
+    // Add the dependency for the Firebase SDK for Google Analytics
+    // When using the BoM, don't specify versions in Firebase dependencies
+    implementation 'com.google.firebase:firebase-messaging'
+    implementation 'com.google.firebase:firebase-analytics'
+
+    //implementation 'com.gpfreetech:IndiUpi:1.1'
+    implementation project(path: ':IndiUpi')
+    implementation 'com.android.support:multidex:2.0.1'
+
+//    implementation 'com.google.firebase:firebase-auth:22.3.0'
+}
