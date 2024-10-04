@@ -63,12 +63,14 @@ public class UploadScreenshots extends AppCompatActivity {
     TextView tv_ins;
     ImageView iv_screenshots_preview, ivUpload;
     private static final int PICK_IMAGE_REQUEST = 1;
-    private Uri imageUri;
+    private Uri imageUri= null;
     double amount;
     int user_id;
     MultipartBody.Part screenshot_image = null;
     CustomDialog customDialog;
     PreferenceManager mPreferenceManager;
+    ImageView iv_back;
+    TextView tv_title;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -80,6 +82,8 @@ public class UploadScreenshots extends AppCompatActivity {
         et_point = findViewById(R.id.et_point);
         ivUpload = findViewById(R.id.ivUpload);
         tv_ins = findViewById(R.id.tv_ins);
+        iv_back = findViewById(R.id.iv_back);
+        tv_title = findViewById(R.id.tv_title);
         mPreferenceManager = new PreferenceManager(UploadScreenshots.this);
 
 
@@ -92,6 +96,15 @@ public class UploadScreenshots extends AppCompatActivity {
                 openGallery();
             }
         });
+
+        iv_back.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
+            }
+        });
+
+        tv_title.setText("Add Funds");
 
 
         checkPermissions();
@@ -112,7 +125,7 @@ public class UploadScreenshots extends AppCompatActivity {
                     amount = 200;
                     user_id = 15;
                     String amount = et_point.getText().toString();
-                    String user_id = mPreferenceManager.getStringPreference(ID);
+                    int user_id = mPreferenceManager.getIntPreference(ID);
 //                    Toast.makeText(UploadScreenshots.this, "" + user_id, Toast.LENGTH_SHORT).show();
 
 
@@ -127,7 +140,7 @@ public class UploadScreenshots extends AppCompatActivity {
                     } else if (Integer.parseInt(et_point.getText().toString()) < 100) {
                         et_point.setError("Enter Point greater than or equal to 100");
                     } else {
-                        upload(amount, user_id);
+                        upload(amount,String.valueOf(user_id));
                     }
 
 
