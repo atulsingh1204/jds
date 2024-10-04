@@ -1,5 +1,6 @@
 include ':app'
-rootProject.name = "DRS Games"
+//rootProject.name = "DRS Games"
+rootProject.name = "JDS"
 //rootProject.name = "RK Official"
 //rootProject.name = "SARMTK Games"
 include ':IndiUpi'

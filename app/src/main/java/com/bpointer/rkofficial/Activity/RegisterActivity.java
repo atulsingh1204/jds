@@ -145,7 +145,7 @@ public class RegisterActivity extends AppCompatActivity {
         customDialog = new CustomDialog(this);
         preferenceManager = new PreferenceManager(this);
 
-        tv_title.setText("DRS Group " + preferenceManager.getStringPreference(ADMIN_WHATSAPP));
+        tv_title.setText("JDS " + preferenceManager.getStringPreference(ADMIN_WHATSAPP));
 
         bt_register.setOnClickListener(new View.OnClickListener() {
             @Override

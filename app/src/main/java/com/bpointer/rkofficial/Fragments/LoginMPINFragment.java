@@ -64,7 +64,7 @@ public class LoginMPINFragment extends Fragment {
         mPreferenceManager = new PreferenceManager(getContext());
         customDialog = new CustomDialog(getContext());
 
-        tv_title.setText("DRS Group " + mPreferenceManager.getStringPreference(ADMIN_WHATSAPP));
+        tv_title.setText("JDS " + mPreferenceManager.getStringPreference(ADMIN_WHATSAPP));
         tv_email.setText("Email: " + mPreferenceManager.getStringPreference(ADMIN_EMAIL));
 
 

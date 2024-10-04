@@ -1,5 +1,7 @@
 package com.bpointer.rkofficial.Api;
 
+import androidx.annotation.Nullable;
+
 import com.bpointer.rkofficial.Model.RequestBody;
 import com.bpointer.rkofficial.Model.Response.AddFundResponseModel.AddFundResponseModel;
 import com.bpointer.rkofficial.Model.Response.AddressDetailsResponseModel.AddressDetailsResponseModel;
@@ -36,10 +38,14 @@ import com.bpointer.rkofficial.Model.Response.WinHistoryResponseModel.WinHistory
 import com.bpointer.rkofficial.Model.Response.WithdrawAmountResponseModel.WithdrawAmountResponseModel;
 import com.bpointer.rkofficial.Model.Response.WithdrawHistoryResponseModel.WithdrawHistoryResponseModel;
 
+import okhttp3.MultipartBody;
+import okhttp3.ResponseBody;
 import retrofit2.Call;
 import retrofit2.http.Body;
 import retrofit2.http.GET;
+import retrofit2.http.Multipart;
 import retrofit2.http.POST;
+import retrofit2.http.Part;
 
 public interface Authentication {
 
@@ -48,6 +54,15 @@ public interface Authentication {
 
     @POST("postUserLogin")
     Call<LoginResponseModel> login(@Body RequestBody body);
+
+
+    @Multipart
+    @POST("addWalletRequestManual")
+    Call<ResponseBody> addWalletRequestManual(@Part("user_id") @Nullable okhttp3.RequestBody user_id,
+                                         @Part("deposit_amount") @Nullable okhttp3.RequestBody amount,
+                                         @Part MultipartBody.Part image);
+
+
 
     @POST("postMpinLogin")
     Call<MPINLoginResponseModel> mpinLogin(@Body RequestBody body);

@@ -50,6 +50,20 @@ public class User {
     @Expose
     private String updatedAt;
 
+    @SerializedName("manual_qr_img")
+    @Expose
+    private String manual_qr_img;
+
+
+    @SerializedName("payment_method")
+    @Expose
+    private int payment_method;
+
+    @SerializedName("instruction")
+    @Expose
+    private String instruction;
+
+
     public Integer getId() {
         return id;
     }
@@ -170,4 +184,28 @@ public class User {
         this.updatedAt = updatedAt;
     }
 
+
+    public String getManual_qr_img() {
+        return manual_qr_img;
+    }
+
+    public void setManual_qr_img(String manual_qr_img) {
+        this.manual_qr_img = manual_qr_img;
+    }
+
+    public int getPayment_method() {
+        return payment_method;
+    }
+
+    public void setPayment_method(int payment_method) {
+        this.payment_method = payment_method;
+    }
+
+    public String getInstruction() {
+        return instruction;
+    }
+
+    public void setInstruction(String instruction) {
+        this.instruction = instruction;
+    }
 }

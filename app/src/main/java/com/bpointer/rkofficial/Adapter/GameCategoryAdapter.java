@@ -10,6 +10,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.view.animation.AnimationUtils;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -258,7 +259,7 @@ public class GameCategoryAdapter extends RecyclerView.Adapter<GameCategoryAdapte
 
     public class ViewHolder extends RecyclerView.ViewHolder {
         TextView tv_name, tv_result, tv_msg, tv_open_bid, tv_close_bid;
-        Button bt_play;
+        ImageView bt_play;
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);

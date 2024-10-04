@@ -21,4 +21,7 @@ public class AppConstant {
     public static final String ADMIN_MOBILE = "ADMIN_MOBILE";
     public static final String ADMIN_EMAIL = "ADMIN_EMAIL";
     public static final String APP_STATUS = "APP_STATUS";
+    public static final String PAYMENT_METHOD = "payment_method";
+    public static final String MANUAL_QR_IMG = "manual_qr_img";
+    public static final String INSTRUCTION = "instruction";
 }

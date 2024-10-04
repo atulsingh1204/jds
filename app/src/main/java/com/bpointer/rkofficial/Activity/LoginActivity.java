@@ -38,8 +38,11 @@ import static com.bpointer.rkofficial.Common.AppConstant.ADMIN_MOBILE;
 import static com.bpointer.rkofficial.Common.AppConstant.ADMIN_WHATSAPP;
 import static com.bpointer.rkofficial.Common.AppConstant.APP_STATUS;
 import static com.bpointer.rkofficial.Common.AppConstant.ID;
+import static com.bpointer.rkofficial.Common.AppConstant.INSTRUCTION;
+import static com.bpointer.rkofficial.Common.AppConstant.MANUAL_QR_IMG;
 import static com.bpointer.rkofficial.Common.AppConstant.MOBILE;
 import static com.bpointer.rkofficial.Common.AppConstant.NAME;
+import static com.bpointer.rkofficial.Common.AppConstant.PAYMENT_METHOD;
 import static com.bpointer.rkofficial.Common.AppConstant.USER_ID;
 
 public class LoginActivity extends AppCompatActivity implements View.OnClickListener {
@@ -78,8 +81,11 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
                         mPreferenceManager.setPreference(ADMIN_EMAIL, response.body().getUser().getEmail());
                         mPreferenceManager.setPreference(ADMIN_MOBILE, response.body().getUser().getContactNumber());
                         mPreferenceManager.setPreference(APP_STATUS, response.body().getAppStatus());
+                        mPreferenceManager.setPreference(PAYMENT_METHOD, response.body().getUser().getPayment_method());
+                        mPreferenceManager.setPreference(MANUAL_QR_IMG, response.body().getUser().getManual_qr_img());
+                        mPreferenceManager.setPreference(INSTRUCTION, response.body().getUser().getInstruction());
 
-                        tv_title.setText("DRS Group " + response.body().getUser().getWhatsappNumber());
+                        tv_title.setText("JDS " + response.body().getUser().getWhatsappNumber());
                         tv_email.setText("Email: " + response.body().getUser().getEmail());
                         tv_mobile.setText("Mo. " + response.body().getUser().getContactNumber());
                     } else {
@@ -176,6 +182,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
                     if (response.body().getStatus().equals("true")) {
                         mPreferenceManager.setIntPreference(ID, response.body().getUser().getId());
                         mPreferenceManager.setPreference(USER_ID, response.body().getUser().getUserId());
+                        Log.e("check", "id: " +response.body().getUser().getId() + " User_id: " +response.body().getUser().getUserId());
                         mPreferenceManager.setPreference(MOBILE, response.body().getUser().getContactNumber());
                         mPreferenceManager.setPreference(NAME, response.body().getUser().getName());
                         sessionManager.setLogin(false);

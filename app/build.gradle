@@ -16,7 +16,8 @@ android {
     defaultConfig {
         //applicationId "com.bpointer.rkofficial"
 //        applicationId "com.rkgroup.rkofficial"
-        applicationId "com.drsgroup.drsofficial"
+//        applicationId "com.drsgroup.drsofficial"
+        applicationId "com.app.jdsgroup"
 
         minSdkVersion 21
         targetSdkVersion 33
@@ -78,6 +79,8 @@ dependencies {
     //implementation 'com.gpfreetech:IndiUpi:1.1'
     implementation project(path: ':IndiUpi')
     implementation 'com.android.support:multidex:2.0.1'
+
+
 
 //    implementation 'com.google.firebase:firebase-auth:22.3.0'
 }

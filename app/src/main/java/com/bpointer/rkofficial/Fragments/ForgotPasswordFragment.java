@@ -78,7 +78,7 @@ public class ForgotPasswordFragment extends Fragment {
         preferenceManager = new PreferenceManager(getContext());
         customDialog = new CustomDialog(getContext());
 
-        tv_title.setText("DRS Group " + preferenceManager.getStringPreference(ADMIN_WHATSAPP));
+        tv_title.setText("JDS " + preferenceManager.getStringPreference(ADMIN_WHATSAPP));
         tv_email.setText("Email: " + preferenceManager.getStringPreference(ADMIN_EMAIL));
 
         bt_submit.setOnClickListener(new View.OnClickListener() {
