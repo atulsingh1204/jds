@@ -1,6 +1,10 @@
 package com.bpointer.rkofficial.Activity;
 
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.view.GravityCompat;
+import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
@@ -12,6 +16,7 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
@@ -31,6 +36,7 @@ import com.bpointer.rkofficial.Model.Response.AdminDetailsResponseModel.AdminDet
 import com.bpointer.rkofficial.Model.Response.HomeResponseModel.HomeResponseModel;
 import com.bpointer.rkofficial.Model.Response.PostTokenResponseModel.PostTokenResponseModel;
 import com.bpointer.rkofficial.R;
+import com.google.android.material.navigation.NavigationView;
 import com.smarteist.autoimageslider.SliderView;
 
 import retrofit2.Call;
@@ -44,7 +50,7 @@ import static com.bpointer.rkofficial.Common.AppConstant.APP_STATUS;
 import static com.bpointer.rkofficial.Common.AppConstant.ID;
 import static com.bpointer.rkofficial.Common.AppConstant.TOKEN_ID;
 
-public class MainActivity extends AppCompatActivity implements View.OnClickListener {
+public class MainActivity extends AppCompatActivity implements View.OnClickListener, NavigationView.OnNavigationItemSelectedListener {
     int userId;
     PreferenceManager preferenceManager;
     SliderView sliderView;
@@ -55,6 +61,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     SwipeRefreshLayout swipeRefreshLayout;
     AlertDialog alertDialog;
     String title, description;
+    private DrawerLayout drawerLayout;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -66,6 +73,15 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         getAdminDetailsAPI();
         postTokenAPI();
         getHomeDataAPI();
+
+        ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(this, drawerLayout,
+                R.string.navigation_drawer_open, R.string.navigation_drawer_close);
+        drawerLayout.addDrawerListener(toggle);
+        toggle.syncState();
+
+
+
+
     }
 
     private void showNotificationDialog() {
@@ -198,7 +214,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         tv_wallet = findViewById(R.id.tv_wallet);
         tv_whatsapp = findViewById(R.id.tv_whatsapp);
         tv_mobile = findViewById(R.id.tv_mobile);
+        drawerLayout = findViewById(R.id.drawer_layout);
         swipeRefreshLayout = findViewById(R.id.swipeRefreshLayout);
+
+        NavigationView navigationView = findViewById(R.id.nav_view);
 
         customDialog = new CustomDialog(this);
         preferenceManager = new PreferenceManager(this);
@@ -243,6 +262,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         rl_share.setOnClickListener(this);
         rl_call.setOnClickListener(this);
         rl_whats_app.setOnClickListener(this);
+        navigationView.setNavigationItemSelectedListener(this);
     }
 
     @SuppressLint("NonConstantResourceId")
@@ -311,4 +331,47 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         super.onBackPressed();
         this.finishAffinity();
     }
+
+    @Override
+    public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+
+        switch (item.getItemId()){
+            case R.id.nav_profile:
+                startActivity(new Intent(this, ProfileActivity.class));
+                break;
+            case R.id.nav_history:
+                startActivity(new Intent(this, HistoryActivity.class));
+                break;
+
+            case R.id.nav_share:
+                share();
+                break;
+
+
+        }
+
+        drawerLayout.closeDrawer(GravityCompat.START);
+        return true;
+    }
+
+//    @Override
+//    public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+//        switch (item.getItemId()) {
+//            case R.id.nav_profile:
+//                Toast.makeText(this, "Clicked on profile", Toast.LENGTH_SHORT).show();
+//                break;
+//            case R.id.nav_history:
+//                Toast.makeText(this, "Clicked on history", Toast.LENGTH_SHORT).show();
+//                break;
+//            case R.id.nav_share:
+//                Toast.makeText(this, "Clicked on history", Toast.LENGTH_SHORT).show();
+//                break;
+//        }
+//        drawerLayout.closeDrawer(GravityCompat.START);
+//        return true;
+//    }
+
+
+
+
 }

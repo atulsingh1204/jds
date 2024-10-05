@@ -32,4 +32,7 @@
     <string name="simple_download_our_application_from_play_store_register_with_your_mobile_number_emailid_and_username_with_rs_official_login_into_the_application_using_user_name_and_password_select_the_main_type_then_the_game_type_then_select_your_favourite_number_and_play_the_game">Simple Download our Application from Play store. Register with your Mobile Number, Email id And Username with JDS . Login into the Application using user name and password. Select the Main type then the Game type then select your favourite number and play the game.</string>
     <string name="enter_4_digit_mpin">Enter 4 Digit Mpin</string>
     <string name="confirm_password">Confirm Password</string>
+
+    <string name="navigation_drawer_open">Open Drawer</string>
+    <string name="navigation_drawer_close">Close Drawer</string>
 </resources>
