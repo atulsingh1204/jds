@@ -4,10 +4,12 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.AlertDialog;
+import android.app.Dialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.provider.ContactsContract;
 import android.provider.Settings;
+import android.util.DisplayMetrics;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -52,6 +54,8 @@ public class RegisterActivity extends AppCompatActivity {
     private String deviceId;
 
     private FirebaseAuth firebaseAuth;
+
+    private int correctAnswer;
 
     private PhoneAuthProvider.OnVerificationStateChangedCallbacks callbacks;
     private String verificationId;
@@ -169,7 +173,9 @@ public class RegisterActivity extends AppCompatActivity {
 //                    verifyNumberAPI();
 
 
-                    sendVerificationCode(et_mobile.getText().toString().trim());
+//                    sendVerificationCode(et_mobile.getText().toString().trim());
+
+                    showCaptchaDialog();
                 }
             }
         });
@@ -288,4 +294,91 @@ public class RegisterActivity extends AppCompatActivity {
             }
         });
     }
+
+
+    private void showCaptchaDialog() {
+        // Create and show the CAPTCHA dialog
+        Dialog captchaDialog;
+        captchaDialog = new Dialog(RegisterActivity.this);
+        captchaDialog.setContentView(R.layout.captcha_dialog_layout);
+        captchaDialog.setCancelable(true);
+
+
+
+        TextView captchaQuestion = captchaDialog.findViewById(R.id.captchaQuestion);
+        EditText captchaAnswer = captchaDialog.findViewById(R.id.captchaAnswer);
+        Button verifyCaptchaButton = captchaDialog.findViewById(R.id.verifyCaptchaButton);
+
+        // Generate random math problem
+        generateCaptcha(captchaQuestion);
+
+        // Set click listener for verification
+        verifyCaptchaButton.setOnClickListener(v -> {
+            String userAnswer = captchaAnswer.getText().toString();
+
+            if (!userAnswer.isEmpty()) {
+                if (Integer.parseInt(userAnswer) == correctAnswer) {
+                    Toast.makeText(RegisterActivity.this, "CAPTCHA Verified!", Toast.LENGTH_SHORT).show();
+                    register();
+                    captchaDialog.dismiss();  // Close the dialog if verified
+                } else {
+                    Toast.makeText(RegisterActivity.this, "Incorrect! Try again.", Toast.LENGTH_SHORT).show();
+                }
+            } else {
+                Toast.makeText(RegisterActivity.this, "Please enter an answer.", Toast.LENGTH_SHORT).show();
+            }
+        });
+
+        captchaDialog.show();
+
+
+        DisplayMetrics metrics = getResources().getDisplayMetrics();
+        int width = (int) (metrics.widthPixels * 0.8);  // 80% of screen width
+        int height = (int) (metrics.heightPixels * 0.5); // 60% of screen height
+
+        captchaDialog.getWindow().setLayout(width, height);
+    }
+
+    /*private void generateCaptcha(TextView captchaQuestion) {
+        // Generate two random numbers for the math problem
+        Random random = new Random();
+        int num1 = random.nextInt(10) + 1;  // Number between 1 and 10
+        int num2 = random.nextInt(10) + 1;  // Number between 1 and 10
+        int operator = random.nextInt(2);   // Randomly choose between addition or subtraction
+
+        if (operator == 0) {
+            // Addition
+            correctAnswer = num1 + num2;
+            captchaQuestion.setText(num1 + " + " + num2 + " = ?");
+        } else {
+            // Subtraction
+            correctAnswer = num1 - num2;
+            captchaQuestion.setText(num1 + " - " + num2 + " = ?");
+        }
+
+        Log.d("CAPTCHA", "Generated CAPTCHA: " + captchaQuestion.getText() + " Answer: " + correctAnswer);
+    }*/
+
+
+    private void generateCaptcha(TextView captchaQuestion) {
+        Random random = new Random();
+        int num1 = random.nextInt(10) + 1;
+        int num2 = random.nextInt(10) + 1;
+        int operator = random.nextInt(2);
+
+        if (operator == 0) {
+            // Addition
+            correctAnswer = num1 + num2;
+            captchaQuestion.setText(num1 + " + " + num2 + " = ?");
+        } else if (num1 >= num2) {
+            // Subtraction, but ensure the result is non-negative
+            correctAnswer = num1 - num2;
+            captchaQuestion.setText(num1 + " - " + num2 + " = ?");
+        } else {
+            // If num1 < num2, regenerate the CAPTCHA to avoid negative result
+            generateCaptcha(captchaQuestion);
+        }
+    }
+
+
 }

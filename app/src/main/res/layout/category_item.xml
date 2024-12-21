@@ -2,8 +2,8 @@
 <androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:layout_height="90dp"
-    android:layout_margin="5dp"
+    android:layout_height="@dimen/dp92"
+    android:layout_margin="@dimen/dp05"
     android:background="@color/white"
     app:cardCornerRadius="15dp"
     app:cardElevation="5dp">
@@ -37,6 +37,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:gravity="center"
+                        android:textSize="13sp"
                         android:text="KALYAN"
                         android:textColor="@color/black"
                         android:textStyle="italic|bold" />
@@ -47,13 +48,14 @@
                         android:layout_height="wrap_content"
                         android:gravity="center"
                         android:text="170-87-340"
+                        android:textSize="13sp"
                         android:textColor="#FF0000"
                         android:textStyle="bold" />
 
                     <TextView
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginBottom="1dp"
+                        android:layout_marginBottom="@dimen/dp01"
                         android:gravity="center"
                         android:visibility="gone"
                         android:text="Market Close For Today"
@@ -63,14 +65,14 @@
                 </LinearLayout>
 
                 <RelativeLayout
-                    android:layout_width="0dp"
+                    android:layout_width="@dimen/dp0"
                     android:layout_height="match_parent"
                     android:background="@color/white"
                     android:layout_weight="1.1">
 
                     <ImageView
-                        android:layout_width="20dp"
-                        android:layout_height="20dp"
+                        android:layout_width="@dimen/dp20"
+                        android:layout_height="@dimen/dp20"
                         android:layout_centerVertical="true"
                         android:src="@drawable/timerbox" />
 
@@ -78,7 +80,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_centerVertical="true"
-                        android:layout_marginStart="25dp"
+                        android:layout_marginStart="@dimen/dp25"
                         android:orientation="vertical">
 
                         <LinearLayout
@@ -131,12 +133,12 @@
                     <ImageView
                         android:visibility="visible"
                         android:id="@+id/bt_play"
-                        android:layout_width="40dp"
-                        android:layout_height="40dp"
+                        android:layout_width="@dimen/dp40"
+                        android:layout_height="@dimen/dp40"
                         android:layout_alignParentEnd="true"
                         android:layout_centerVertical="true"
                         android:src="@drawable/chart"
-                        android:layout_marginEnd="5dp"
+                        android:layout_marginEnd="@dimen/dp05"
                         android:text="Panel Chart"
                         android:textAllCaps="false"
                         android:textColor="@color/black"
@@ -160,9 +162,9 @@
 
         <TextView
             android:layout_width="match_parent"
-            android:layout_height="20dp"
+            android:layout_height="@dimen/dp20"
             android:id="@+id/tv_msg"
-            android:layout_marginTop="20dp"
+            android:layout_marginTop="@dimen/dp20"
             android:layout_alignParentBottom="true"
             android:text="Betting is closed"
             android:gravity="center_horizontal"

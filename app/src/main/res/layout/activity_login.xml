@@ -237,7 +237,7 @@
             <!--                android:textStyle="italic" />-->
 
             <Button
-                android:id="@+id/bt_login_mpin"
+                android:id="@+id/tv_new_user"
                 style="@style/PrimayButton"
                 android:layout_width="match_parent"
                 android:layout_height="56dp"
@@ -245,7 +245,7 @@
                 android:fontFamily="@font/noto_sans_semibold"
                 android:insetTop="0dp"
                 android:insetBottom="0dp"
-                android:text="@string/login_with_mpin"
+                android:text="Create a new account"
                 android:textAllCaps="false"
                 android:textColor="@color/white"
                 android:textSize="16sp"
@@ -262,16 +262,17 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_alignParentStart="true"
+                    android:visibility="gone"
                     android:text="Don't have account?"
                     android:textColor="@color/textprimaryColor" />
 
                 <TextView
-                    android:id="@+id/tv_new_user"
+                    android:id="@+id/bt_login_mpin"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="end"
                     android:layout_alignParentEnd="true"
-                    android:text="Create a new account"
+                    android:text="@string/login_with_mpin"
 
                     android:textColor="@color/colorPrimary" />
             </RelativeLayout>

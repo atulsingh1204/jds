@@ -2,6 +2,7 @@ package com.bpointer.rkofficial.Adapter;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
+import android.graphics.Color;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -45,7 +46,22 @@ public class DepositHistoryAdapter extends RecyclerView.Adapter<DepositHistoryAd
 
         holder.tv_transaction_date.setText(getDate(history.getCreatedAt()));
         holder.tv_point.setText("" + history.getDepositAmount() + "/-");
-        holder.tv_transaction_number.setText("" + history.getTransactionNumber());
+        if (history.getTransactionNumber() == null){
+            holder.tv_transaction_number.setText("NA");
+        }else {
+            holder.tv_transaction_number.setText("" + history.getTransactionNumber());
+        }
+
+        if (history.getPayment_status().equalsIgnoreCase("0")){
+            holder.tv_status.setText("Pending");
+            holder.tv_status.setTextColor(Color.parseColor("#FFFF00"));
+        }else if (history.getPayment_status().equalsIgnoreCase("1")){
+            holder.tv_status.setText("Accepted");
+            holder.tv_status.setTextColor(Color.parseColor("#FF0000"));
+        }else if (history.getPayment_status().equalsIgnoreCase("2")){
+            holder.tv_status.setText("Rejected");
+            holder.tv_status.setTextColor(Color.parseColor("#008000"));
+        }
     }
 
     @SuppressLint("SimpleDateFormat")
@@ -67,13 +83,14 @@ public class DepositHistoryAdapter extends RecyclerView.Adapter<DepositHistoryAd
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder {
-        TextView tv_transaction_date, tv_point, tv_transaction_number;
+        TextView tv_transaction_date, tv_point, tv_transaction_number, tv_status;
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
             tv_transaction_date = itemView.findViewById(R.id.tv_transaction_date);
             tv_point = itemView.findViewById(R.id.tv_point);
             tv_transaction_number = itemView.findViewById(R.id.tv_transaction_number);
+            tv_status = itemView.findViewById(R.id.tv_status);
         }
     }
 }

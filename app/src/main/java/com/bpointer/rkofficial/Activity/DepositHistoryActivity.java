@@ -48,7 +48,6 @@ public class DepositHistoryActivity extends AppCompatActivity implements View.On
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_deposit_history);
-    
         initView();
         getDepositHistoryAPI("");
     }

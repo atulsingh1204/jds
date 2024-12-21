@@ -11,6 +11,7 @@ import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
 import android.annotation.SuppressLint;
 import android.app.AlertDialog;
+import android.app.Dialog;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
@@ -20,6 +21,8 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -50,17 +53,20 @@ import static com.bpointer.rkofficial.Common.AppConstant.APP_STATUS;
 import static com.bpointer.rkofficial.Common.AppConstant.ID;
 import static com.bpointer.rkofficial.Common.AppConstant.TOKEN_ID;
 
+import java.util.Random;
+
 public class MainActivity extends AppCompatActivity implements View.OnClickListener, NavigationView.OnNavigationItemSelectedListener {
     int userId;
     PreferenceManager preferenceManager;
     SliderView sliderView;
     RecyclerView rv_category;
-    RelativeLayout rl_notification, rl_wallet, rl_profile, rl_history, rl_share, rl_whats_app, rl_call;
+    RelativeLayout rl_notification, rl_wallet, rl_profile, rl_history, rl_share, rl_whats_app, rl_call, rlSideNavigation;
     TextView tv_wallet, tv_mobile, tv_whatsapp;
     CustomDialog customDialog;
     SwipeRefreshLayout swipeRefreshLayout;
     AlertDialog alertDialog;
     String title, description;
+    ImageView ivToogle;
     private DrawerLayout drawerLayout;
 
     @Override
@@ -204,7 +210,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     private void initView() {
         sliderView = findViewById(R.id.imageSlider);
         rv_category = findViewById(R.id.rv_category);
-        rl_notification = findViewById(R.id.rl_notification);
+//        rl_notification = findViewById(R.id.rl_notification);
         rl_wallet = findViewById(R.id.rl_wallet);
         rl_profile = findViewById(R.id.rl_profile);
         rl_history = findViewById(R.id.rl_history);
@@ -216,6 +222,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         tv_mobile = findViewById(R.id.tv_mobile);
         drawerLayout = findViewById(R.id.drawer_layout);
         swipeRefreshLayout = findViewById(R.id.swipeRefreshLayout);
+        rlSideNavigation = findViewById(R.id.rlSideNavigation);
+        ivToogle = findViewById(R.id.ivToogle);
 
         NavigationView navigationView = findViewById(R.id.nav_view);
 
@@ -255,13 +263,14 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             }
         });
         
-        rl_notification.setOnClickListener(this);
+//        rl_notification.setOnClickListener(this);
         rl_wallet.setOnClickListener(this);
         rl_profile.setOnClickListener(this);
         rl_history.setOnClickListener(this);
         rl_share.setOnClickListener(this);
         rl_call.setOnClickListener(this);
         rl_whats_app.setOnClickListener(this);
+        ivToogle.setOnClickListener(this);
         navigationView.setNavigationItemSelectedListener(this);
     }
 
@@ -270,8 +279,14 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     public void onClick(View v) {
         if (preferenceManager.getStringPreference(APP_STATUS).equalsIgnoreCase("1")) {
             switch (v.getId()) {
-                case R.id.rl_notification:
-                    startActivity(new Intent(this, NotificationActivity.class));
+//                case R.id.rl_notification:
+                case R.id.ivToogle:
+//                    startActivity(new Intent(this, NotificationActivity.class));
+                    if (drawerLayout.isDrawerOpen(GravityCompat.START)) {
+                        drawerLayout.closeDrawer(GravityCompat.START);
+                    } else {
+                        drawerLayout.openDrawer(GravityCompat.START);
+                    }
                     break;
 
                 case R.id.rl_wallet:

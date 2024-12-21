@@ -13,12 +13,13 @@
             android:background="@color/colorPrimary">
 
 
-            <LinearLayout
+            <!--<LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
                 android:layout_alignParentTop="true"
                 android:background="@color/colorPrimary"
                 android:gravity="center"
+                android:id="@+id/ll_toolbar"
                 android:weightSum="3">
 
                 <RelativeLayout
@@ -40,6 +41,7 @@
                         android:gravity="center"
                         android:text="Notification"
                         android:textColor="@color/white" />
+
                 </RelativeLayout>
 
                 <LinearLayout
@@ -92,7 +94,78 @@
                         android:text="0"
                         android:textColor="@color/white" />
                 </RelativeLayout>
-            </LinearLayout>
+            </LinearLayout>-->
+
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:id="@+id/rlSideNavigation"
+                android:layout_height="wrap_content">
+
+                <ImageView
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:id="@+id/ivToogle"
+                    android:layout_marginStart="10dp"
+                    android:src="@drawable/ic_side_navigation"/>
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_toStartOf="@+id/rl_wallet"
+                    android:layout_toEndOf="@id/ivToogle"
+                    android:orientation="horizontal"
+                    android:padding="5dp"
+                    android:gravity="center"
+                    android:weightSum="3">
+
+                    <ImageView
+                        android:layout_width="30dp"
+                        android:layout_height="30dp"
+                        android:layout_marginRight="10dp"
+                        android:src="@drawable/matka" />
+
+                    <ImageView
+                        android:layout_width="35dp"
+                        android:layout_height="35dp"
+                        android:layout_marginRight="10dp"
+                        android:src="@drawable/jds_logo" />
+
+                    <ImageView
+                        android:layout_width="30dp"
+                        android:layout_height="30dp"
+                        android:layout_marginRight="10dp"
+                        android:src="@drawable/card" />
+                </LinearLayout>
+
+
+                <RelativeLayout
+                    android:id="@+id/rl_wallet"
+                    android:layout_width="100dp"
+                    android:layout_height="40dp"
+                    android:layout_marginStart="5dp"
+                    android:layout_alignParentEnd="true"
+                    android:layout_marginEnd="5dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/bg_button_round2"
+                    android:gravity="center"
+                    android:padding="5dp">
+
+                    <TextView
+                        android:id="@+id/tv_wallet"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:drawableStart="@drawable/ic_baseline_account_balance_wallet_24"
+                        android:drawablePadding="5dp"
+                        android:drawableTint="@color/white"
+                        android:gravity="center"
+                        android:text="0"
+                        android:textColor="@color/white" />
+                </RelativeLayout>
+
+
+            </RelativeLayout>
+
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -198,6 +271,7 @@
                 android:layout_alignParentBottom="true"
                 android:background="@color/colorPrimary"
                 android:gravity="center"
+                android:visibility="gone"
                 android:weightSum="3">
 
                 <RelativeLayout
@@ -210,7 +284,10 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="match_parent"
-                        android:layout_margin="3dp"
+                        android:layout_marginStart="3dp"
+                        android:layout_marginTop="3dp"
+                        android:layout_marginEnd="3dp"
+                        android:layout_marginBottom="3dp"
                         android:drawableTop="@drawable/ic_person"
                         android:drawableTint="@color/white"
                         android:gravity="center"

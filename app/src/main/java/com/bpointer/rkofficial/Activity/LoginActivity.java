@@ -7,6 +7,7 @@ import androidx.fragment.app.FragmentTransaction;
 
 import android.annotation.SuppressLint;
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.provider.Settings;
 import android.telephony.TelephonyManager;
@@ -46,13 +47,14 @@ import static com.bpointer.rkofficial.Common.AppConstant.PAYMENT_METHOD;
 import static com.bpointer.rkofficial.Common.AppConstant.USER_ID;
 
 public class LoginActivity extends AppCompatActivity implements View.OnClickListener {
-    TextView tv_new_user, tv_forgot_password, tv_title, tv_mobile, tv_email;
-    Button bt_login, bt_login_mpin;
+    TextView  tv_forgot_password, tv_title, tv_mobile, tv_email, bt_login_mpin;
+    Button bt_login, tv_new_user;
     EditText et_mobile, et_password;
     PreferenceManager mPreferenceManager;
     SessionManager sessionManager;
     CustomDialog customDialog;
     private String deviceId;
+    private String phoneNumber = "";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -86,6 +88,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
                         mPreferenceManager.setPreference(INSTRUCTION, response.body().getUser().getInstruction());
 
                         tv_title.setText("JDS " + response.body().getUser().getWhatsappNumber());
+                        phoneNumber = response.body().getUser().getWhatsappNumber();
                         tv_email.setText("Email: " + response.body().getUser().getEmail());
                         tv_mobile.setText("Mo. " + response.body().getUser().getContactNumber());
                     } else {
@@ -154,10 +157,13 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
                 break;
 
             case R.id.tv_forgot_password:
-                fragment = new ForgotPasswordFragment();
-                fragmentTransaction.add(R.id.content, fragment);
-                fragmentTransaction.addToBackStack(fragment.toString());
-                fragmentTransaction.commit();
+//                fragment = new ForgotPasswordFragment();
+//                fragmentTransaction.add(R.id.content, fragment);
+//                fragmentTransaction.addToBackStack(fragment.toString());
+//                fragmentTransaction.commit();
+
+                sendWhatsAppMessage();
+
                 break;
 
             case R.id.tv_new_user:
@@ -204,4 +210,34 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
             }
         });
     }
+
+    private void sendWhatsAppMessage() {
+        // Phone number with country code (without '+' sign). Replace with the actual phone number
+
+
+        String message = "I forgot my password.";
+
+
+//        String phoneNumber = "1234567890"; // Replace with the recipient's WhatsApp number
+//        String message = "I forgot my password";
+
+        try {
+            // Create the URI for WhatsApp intent
+            Uri uri = Uri.parse("https://api.whatsapp.com/send?phone=" + phoneNumber + "&text=" + Uri.encode(message));
+            // Create an Intent to open WhatsApp with the prefilled message
+            Intent intent = new Intent(Intent.ACTION_VIEW, uri);
+            intent.setPackage("com.whatsapp");
+
+            // Check if WhatsApp is installed
+            if (intent.resolveActivity(getPackageManager()) != null) {
+                startActivity(intent);
+            } else {
+                Toast.makeText(this, "WhatsApp is not installed on this device", Toast.LENGTH_SHORT).show();
+            }
+        } catch (Exception e) {
+            Toast.makeText(this, "Failed to open WhatsApp", Toast.LENGTH_SHORT).show();
+            e.printStackTrace();
+        }
+    }
+
 }
